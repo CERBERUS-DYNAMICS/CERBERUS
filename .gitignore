@@ -1,0 +1,22 @@
+# ROS 2 generated files
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# C/C++
+*.o
+*.so
+*.a
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

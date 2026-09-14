@@ -1,0 +1,793 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="cerberus">
+  <materials>
+    <material name="ABS_White">
+      <color rgba="0.95 0.95 0.95 1.0" />
+    </material><material name="Motor_Dark">
+      <color rgba="0.2 0.2 0.2 1.0" />
+    </material><material name="Bracket_Grey">
+      <color rgba="0.6 0.6 0.6 1.0" />
+    </material><material name="Camera_Black">
+      <color rgba="0.1 0.1 0.1 1.0" />
+    </material>
+  </materials><link name="base_link">
+    <inertial>
+      <origin xyz="-4.57177349500726e-17 7.908900113462166e-18 0.015491197840447342" rpy="0.0 0.0 0.0" />
+      <mass value="0.66546966" />
+      <inertia ixx="0.00141463" iyy="0.00370029" izz="0.00480195" ixy="-0.00000000" iyz="0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="base_link_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="base_link_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.220 0.120 0.050" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_motor1_link">
+    <inertial>
+      <origin xyz="-3.792272913472061e-09 0.018798577356897488 0.01272622698808095" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001865" iyy="0.00001531" izz="0.00001025" ixy="-0.00000000" iyz="-0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="st3215_own_rf_1_visual">
+      <origin xyz="-3.792271385805179e-09 0.0022000039921576155 4.653105412089076e-09" rpy="1.5707963267948946 -2.143963231366392e-15 -2.553512956637885e-15" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rf_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rf_1_collision">
+      <origin xyz="-3.792271385805179e-09 0.0022000039921576155 4.653105412089076e-09" rpy="1.5707963267948946 -2.143963231366392e-15 -2.553512956637885e-15" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_motor1_link">
+    <inertial>
+      <origin xyz="-3.7922728068906505e-09 0.01870142264309596 -0.01272622698808159" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001865" iyy="0.00001531" izz="0.00001025" ixy="0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="st3215_own_rb_1_visual">
+      <origin xyz="-3.792271314750906e-09 0.03529999600783594 -4.6531061226318116e-09" rpy="-1.570796326794899 2.1439632313663882e-15 -2.4424906541753728e-15" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rb_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rb_1_collision">
+      <origin xyz="-3.792271314750906e-09 0.03529999600783594 -4.6531061226318116e-09" rpy="-1.570796326794899 2.1439632313663882e-15 -2.4424906541753728e-15" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_motor1_bracket_link">
+    <inertial>
+      <origin xyz="-0.003990402377894231 3.792307410321883e-09 -3.989922525704515e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.01920592" />
+      <inertia ixx="0.00000566" iyy="0.00000525" izz="0.00000261" ixy="-0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="bracket_own_rf_visual">
+      <origin xyz="0.004000004863210709 3.792271421332316e-09 -3.989922543468083e-09" rpy="1.5707963267948946 -2.5535129566378884e-15 -1.5707963267948946" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/bracket_own_rf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="bracket_own_rf_collision">
+      <origin xyz="0.004000004863210709 3.792271421332316e-09 -3.989922543468083e-09" rpy="1.5707963267948946 -2.5535129566378884e-15 -1.5707963267948946" />
+      <geometry>
+        <box size="0.040 0.024 0.024" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_motor1_bracket_link">
+    <inertial>
+      <origin xyz="0.003990411684105926 3.7922351836527925e-09 -3.989922454650241e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.01920592" />
+      <inertia ixx="0.00000566" iyy="0.00000525" izz="0.00000261" ixy="-0.00000000" iyz="0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="bracket_own_lf_visual">
+      <origin xyz="-0.003999995556999014 3.792271101588085e-09 -3.9899224368866724e-09" rpy="1.570796326794898 2.4424906541753972e-15 1.5707963267949026" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/bracket_own_lf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="bracket_own_lf_collision">
+      <origin xyz="-0.003999995556999014 3.792271101588085e-09 -3.9899224368866724e-09" rpy="1.570796326794898 2.4424906541753972e-15 1.5707963267949026" />
+      <geometry>
+        <box size="0.040 0.024 0.024" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_motor1_link">
+    <inertial>
+      <origin xyz="-3.792270000246845e-09 0.01879857735689761 -0.012726217681868457" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001865" iyy="0.00001531" izz="0.00001025" ixy="-0.00000000" iyz="0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="st3215_own_lf_1_visual">
+      <origin xyz="-3.792271421332316e-09 0.0022000039921575088 4.653107099628074e-09" rpy="-1.5707963267948943 2.2664279112811255e-15 3.141592653589791" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lf_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lf_1_collision">
+      <origin xyz="-3.792271421332316e-09 0.0022000039921575088 4.653107099628074e-09" rpy="-1.5707963267948943 2.2664279112811255e-15 3.141592653589791" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_motor1_link">
+    <inertial>
+      <origin xyz="-3.792272735836378e-09 0.01879856937257646 0.012726217681867666" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001865" iyy="0.00001531" izz="0.00001025" ixy="-0.00000000" iyz="-0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="st3215_own_lb_1_visual">
+      <origin xyz="-3.792271385805179e-09 0.0021999960078363935 -4.6531077924072405e-09" rpy="1.5707963267948943 2.1439632313663935e-15 2.4424906541753783e-15" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lb_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lb_1_collision">
+      <origin xyz="-3.792271385805179e-09 0.0021999960078363935 -4.6531077924072405e-09" rpy="1.5707963267948943 2.1439632313663935e-15 2.4424906541753783e-15" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_motor1_bracket_link">
+    <inertial>
+      <origin xyz="0.003990411684106814 3.7923072682133355e-09 -3.994398642959141e-09" rpy="0.0 2.3076932245710885e-61 0.0" />
+      <mass value="0.01920592" />
+      <inertia ixx="0.00000566" iyy="0.00000525" izz="0.00000261" ixy="0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="bracket_own_lb_visual">
+      <origin xyz="-0.003999995556998108 3.792271243696632e-09 -3.994398625195572e-09" rpy="-1.570796326794898 -2.4424906541753783e-15 -1.5707963267948946" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/bracket_own_lb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="bracket_own_lb_collision">
+      <origin xyz="-0.003999995556998108 3.792271243696632e-09 -3.994398625195572e-09" rpy="-1.570796326794898 -2.4424906541753783e-15 -1.5707963267948946" />
+      <geometry>
+        <box size="0.040 0.024 0.024" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_motor1_bracket_link">
+    <inertial>
+      <origin xyz="-0.003990402377892863 3.7923075169032924e-09 -3.989928956116273e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.01920592" />
+      <inertia ixx="0.00000566" iyy="0.00000525" izz="0.00000261" ixy="-0.00000000" iyz="0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="bracket_own_rb_visual">
+      <origin xyz="0.004000004863212059 3.792271563440863e-09 -3.989928973879842e-09" rpy="1.5707963267948937 -2.4424906541753783e-15 -1.5707963267948921" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/bracket_own_rb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="bracket_own_rb_collision">
+      <origin xyz="0.004000004863212059 3.792271563440863e-09 -3.989928973879842e-09" rpy="1.5707963267948937 -2.4424906541753783e-15 -1.5707963267948921" />
+      <geometry>
+        <box size="0.040 0.024 0.024" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_motor2_link">
+    <inertial>
+      <origin xyz="0.018798578227950797 3.989923982317123e-09 0.012726226127246817" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001531" iyy="0.00001865" izz="0.00001025" ixy="0.00000000" iyz="0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="st3215_own_rf_2_visual">
+      <origin xyz="0.0022000048632107648 3.989922507940946e-09 3.792271314750906e-09" rpy="1.5707963267948977 2.664535259100413e-15 -1.5707963267948937" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rf_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rf_2_collision">
+      <origin xyz="0.0022000048632107648 3.989922507940946e-09 3.792271314750906e-09" rpy="1.5707963267948977 2.664535259100413e-15 -1.5707963267948937" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_motor2_link">
+    <inertial>
+      <origin xyz="-0.018798568921739138 3.989921104619043e-09 0.012726226127246498" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001531" iyy="0.00001865" izz="0.00001025" ixy="0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="st3215_own_lf_2_visual">
+      <origin xyz="-0.0021999955569990347 3.989922507940946e-09 3.792271066060948e-09" rpy="1.5707963267948895 -2.664535259100413e-15 1.5707963267948988" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lf_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lf_2_collision">
+      <origin xyz="-0.0021999955569990347 3.989922507940946e-09 3.792271066060948e-09" rpy="1.5707963267948895 -2.664535259100413e-15 1.5707963267948988" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_motor2_link">
+    <inertial>
+      <origin xyz="-0.018798568921738194 3.9943972751643746e-09 0.012726226127246677" rpy="0.0 -0.0 0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001531" iyy="0.00001865" izz="0.00001025" ixy="0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="st3215_own_lb_2_visual">
+      <origin xyz="-0.0021999955569981288 3.994398696249846e-09 3.792271208169495e-09" rpy="1.5707963267949006 0.0 1.5707963267948926" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lb_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lb_2_collision">
+      <origin xyz="-0.0021999955569981288 3.994398696249846e-09 3.792271208169495e-09" rpy="1.5707963267949006 0.0 1.5707963267948926" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_motor2_link">
+    <inertial>
+      <origin xyz="0.018798578227952004 3.989930483783155e-09 0.01272622612724721" rpy="0.0 -0.0 0.0" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001531" iyy="0.00001865" izz="0.00001025" ixy="-0.00000000" iyz="0.00000000" ixz="-0.00000000" />
+    </inertial>
+        <visual name="st3215_own_rb_2_visual">
+      <origin xyz="0.002200004863212044 3.98992899164341e-09 3.792271563440863e-09" rpy="1.5707963267949023 2.6645352591004124e-15 -1.5707963267948926" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rb_2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rb_2_collision">
+      <origin xyz="0.002200004863212044 3.98992899164341e-09 3.792271563440863e-09" rpy="1.5707963267949023 2.6645352591004124e-15 -1.5707963267948926" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_motor2_bracket_link">
+    <inertial>
+      <origin xyz="-0.014752573869330323 -4.162006497772097e-06 0.029548870918401297" rpy="0.0 -0.0 0.0" />
+      <mass value="0.03083710" />
+      <inertia ixx="0.00001183" iyy="0.00001803" izz="0.00001065" ixy="-0.00000000" iyz="0.00000024" ixz="0.00000000" />
+    </inertial>
+        <visual name="hip_own_rf_visual">
+      <origin xyz="0.003500004860974961 0.0002500039899230622 0.03400000400237792" rpy="3.1415926535897913 1.5707963267948943 0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/hip_own_rf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="hip_own_rf_collision">
+      <origin xyz="0.003500004860974961 0.0002500039899230622 0.03400000400237792" rpy="3.1415926535897913 1.5707963267948943 0" />
+      <geometry>
+        <box size="0.100 0.024 0.020" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_motor2_bracket_link">
+    <inertial>
+      <origin xyz="-0.014752574285069606 4.162006497843151e-06 -0.029548870918400888" rpy="0.0 -0.0 0.0" />
+      <mass value="0.03083710" />
+      <inertia ixx="0.00001183" iyy="0.00001803" izz="0.00001065" ixy="0.00000000" iyz="0.00000024" ixz="-0.00000000" />
+    </inertial>
+        <visual name="hip_own_lf_visual">
+      <origin xyz="0.0035000044452356605 -0.0002500039899229911 -0.03400000400237762" rpy="-1.2385925618474923e-15 -1.570796326794888 0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/hip_own_lf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="hip_own_lf_collision">
+      <origin xyz="0.0035000044452356605 -0.0002500039899229911 -0.03400000400237762" rpy="-1.2628786905111345e-15 -1.570796326794888 0" />
+      <geometry>
+        <box size="0.100 0.024 0.020" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_motor2_bracket_link">
+    <inertial>
+      <origin xyz="-0.014752574285068524 4.162002021583788e-06 -0.029548870918400996" rpy="0.0 -0.0 0.0" />
+      <mass value="0.03083710" />
+      <inertia ixx="0.00001183" iyy="0.00001803" izz="0.00001065" ixy="0.00000000" iyz="0.00000024" ixz="-0.00000000" />
+    </inertial>
+        <visual name="hip_own_lb_visual">
+      <origin xyz="0.0035000044452367972 -0.0002500039943992505 -0.03400000400237767" rpy="-1.2628786905111345e-15 -1.570796326794891 0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/hip_own_lb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="hip_own_lb_collision">
+      <origin xyz="0.0035000044452367972 -0.0002500039943992505 -0.03400000400237767" rpy="-1.2628786905111345e-15 -1.570796326794891 0" />
+      <geometry>
+        <box size="0.100 0.024 0.020" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_motor2_bracket_link">
+    <inertial>
+      <origin xyz="-0.014752573869329525 -4.162006491270631e-06 0.02954887091840151" rpy="0.0 -0.0 0.0" />
+      <mass value="0.03083710" />
+      <inertia ixx="0.00001183" iyy="0.00001803" izz="0.00001065" ixy="-0.00000000" iyz="0.00000024" ixz="0.00000000" />
+    </inertial>
+        <visual name="hip_own_rb_visual">
+      <origin xyz="0.0035000048609758138 0.0002500039899295992 0.03400000400237822" rpy="3.1415926535897905 1.5707963267948906 0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/hip_own_rb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="hip_own_rb_collision">
+      <origin xyz="0.0035000048609758138 0.0002500039899295992 0.03400000400237822" rpy="3.1415926535897905 1.5707963267948906 0" />
+      <geometry>
+        <box size="0.100 0.024 0.020" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_motor3_link">
+    <inertial>
+      <origin xyz="-0.0016553483741866871 0.02000662176580522 -0.019809272934116093" rpy="-1.6811040669632078e-33 -3.0814879110195767e-33 5.5511151231257815e-17" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001624" iyy="0.00001562" izz="0.00001235" ixy="-0.00000054" iyz="0.00000182" ixz="-0.00000315" />
+    </inertial>
+        <visual name="st3215_own_rf_3_visual">
+      <origin xyz="-0.015465250974704753 0.008813391149103724 -0.030830504770414695" rpy="1.570796326794898 0.5235987755983024 -0.5235987755983003" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rf_3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rf_3_collision">
+      <origin xyz="-0.015465250974704753 0.008813391149103724 -0.030830504770414695" rpy="1.570796326794898 0.5235987755983024 -0.5235987755983003" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_motor3_link">
+    <inertial>
+      <origin xyz="-0.0016553481663169657 0.020006622125846113 -0.019809272934115753" rpy="-1.4732991469248043e-33 -0.0 -5.551115123125783e-17" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001624" iyy="0.00001562" izz="0.00001235" ixy="-0.00000054" iyz="0.00000182" ixz="-0.00000315" />
+    </inertial>
+        <visual name="st3215_own_lf_3_visual">
+      <origin xyz="-0.015465250766834995 0.008813391509144673 -0.030830504770414446" rpy="1.5707963267949048 0.5235987755983015 -0.523598775598296" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lf_3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lf_3_collision">
+      <origin xyz="-0.015465250766834995 0.008813391509144673 -0.030830504770414446" rpy="1.5707963267949048 0.5235987755983015 -0.523598775598296" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_motor3_link">
+    <inertial>
+      <origin xyz="-0.0016553481701942375 0.020006622128083264 -0.01980927293411561" rpy="1.5603618002566874e-33 3.0814879110195774e-35 -5.551115123125783e-17" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001624" iyy="0.00001562" izz="0.00001235" ixy="-0.00000054" iyz="0.00000182" ixz="-0.00000315" />
+    </inertial>
+        <visual name="st3215_own_lb_3_visual">
+      <origin xyz="-0.015465250770712266 0.008813391511381776 -0.03083050477041425" rpy="1.5707963267949006 0.5235987755983015 -0.5235987755982983" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_lb_3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_lb_3_collision">
+      <origin xyz="-0.015465250770712266 0.008813391511381776 -0.03083050477041425" rpy="1.5707963267949006 0.5235987755983015 -0.5235987755982983" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_motor3_link">
+    <inertial>
+      <origin xyz="-0.00165534837419282 0.020006621765807822 -0.019809272934116037" rpy="1.667996317084026e-34 -3.0814879110195767e-33 5.5511151231257815e-17" />
+      <mass value="0.07000000" />
+      <inertia ixx="0.00001624" iyy="0.00001562" izz="0.00001235" ixy="-0.00000054" iyz="0.00000182" ixz="-0.00000315" />
+    </inertial>
+        <visual name="st3215_own_rb_3_visual">
+      <origin xyz="-0.01546525097471085 0.00881339114910638 -0.03083050477041473" rpy="1.5707963267949032 0.5235987755983019 -0.5235987755982985" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/st3215_own_rb_3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="st3215_own_rb_3_collision">
+      <origin xyz="-0.01546525097471085 0.00881339114910638 -0.03083050477041473" rpy="1.5707963267949032 0.5235987755983019 -0.5235987755982985" />
+      <geometry>
+        <box size="0.0452 0.0242 0.0406" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rf_toe_link">
+    <inertial>
+      <origin xyz="0.0025271739587537922 -0.02362014879487912 -0.040911315433388724" rpy="0.0 -0.0 1.9446922743316068e-62" />
+      <mass value="0.04466176" />
+      <inertia ixx="0.00004904" iyy="0.00003639" izz="0.00001336" ixy="-0.00000003" iyz="-0.00001994" ixz="-0.00000005" />
+    </inertial>
+        <visual name="toe_own_rf_visual">
+      <origin xyz="0.0075000048587396334 -3.16849285080778e-05 -5.490364033049033e-05" rpy="1.1669901312345535e-15 0.5235987755983 1.570796326794896" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_rf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="toe_own_rf_collision">
+      <origin xyz="0.0075000048587396334 -3.16849285080778e-05 -5.490364033049033e-05" rpy="1.1669901312345535e-15 0.5235987755983 1.570796326794896" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_rf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lf_toe_link">
+    <inertial>
+      <origin xyz="-0.0025271646570143424 0.02362015363063545 0.04091131264146299" rpy="0.0 -0.0 0.0" />
+      <mass value="0.04466176" />
+      <inertia ixx="0.00004904" iyy="0.00003639" izz="0.00001336" ixy="-0.00000003" iyz="-0.00001994" ixz="-0.00000005" />
+    </inertial>
+        <visual name="toe_own_lf_visual">
+      <origin xyz="-0.007499995556999828 3.169504355440722e-05 5.489780040516479e-05" rpy="3.141592653589785 0.523598775598299 1.570796326794893" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_lf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="toe_own_lf_collision">
+      <origin xyz="-0.007499995556999828 3.169504355440722e-05 5.489780040516479e-05" rpy="3.141592653589785 0.523598775598299 1.570796326794893" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_lf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="rb_toe_link">
+    <inertial>
+      <origin xyz="0.002527173958754343 -0.02362014879488573 -0.04091131543338879" rpy="0.0 -0.0 0.0" />
+      <mass value="0.04466176" />
+      <inertia ixx="0.00004904" iyy="0.00003639" izz="0.00001336" ixy="-0.00000003" iyz="-0.00001994" ixz="-0.00000005" />
+    </inertial>
+        <visual name="toe_own_rb_visual">
+      <origin xyz="0.007500004858740415 -3.168492851468585e-05 -5.490364033056139e-05" rpy="6.617600066731704e-15 0.523598775598302 1.5707963267948977" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_rb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="toe_own_rb_collision">
+      <origin xyz="0.007500004858740415 -3.168492851468585e-05 -5.490364033056139e-05" rpy="6.617600066731704e-15 0.523598775598302 1.5707963267948977" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_rb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="lb_toe_link">
+    <inertial>
+      <origin xyz="-0.0025271646570129568 0.023620153635111753 0.040911312641462916" rpy="0.0 -0.0 0.0" />
+      <mass value="0.04466176" />
+      <inertia ixx="0.00004904" iyy="0.00003639" izz="0.00001336" ixy="-0.00000003" iyz="-0.00001994" ixz="-0.00000005" />
+    </inertial>
+        <visual name="toe_own_lb_visual">
+      <origin xyz="-0.007499995556998584 3.169504803071988e-05 5.48978004051115e-05" rpy="3.141592653589789 0.523598775598299 1.5707963267948952" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_lb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="toe_own_lb_collision">
+      <origin xyz="-0.007499995556998584 3.169504803071988e-05 5.48978004051115e-05" rpy="3.141592653589789 0.523598775598299 1.5707963267948952" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/toe_own_lb.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="camera_link">
+    <inertial>
+      <origin xyz="-3.792271705549411e-09 0.005490787363544207 4.6531504449554005e-09" rpy="0.0 -0.0 0.0" />
+      <mass value="0.01571123" />
+      <inertia ixx="0.00000128" iyy="0.00000160" izz="0.00000067" ixy="0.00000000" iyz="-0.00000000" ixz="0.00000000" />
+    </inertial>
+        <visual name="CAMERA_visual">
+      <origin xyz="-3.792271705549411e-09 0.010000003992158302 4.653106453478273e-09" rpy="-3.1415926535897905 -1.5707963267948946 0" />
+      <geometry>
+        <mesh filename="package://cerberus_description/urdf/meshes/CAMERA.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+        <collision name="CAMERA_collision">
+      <origin xyz="-3.792271705549411e-09 0.010000003992158302 4.653106453478273e-09" rpy="-3.1415926535897905 -1.5707963267948946 0" />
+      <geometry>
+        <box size="0.020 0.020 0.020" />
+      </geometry>
+    </collision>
+  </link>
+    <link name="imu_link">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <mass value="0.005" />
+      <inertia ixx="0.0000001" iyy="0.0000001" izz="0.00000015" ixy="0.0" iyz="0.0" ixz="0.0" />
+    </inertial>
+        <visual name="imu_link_visual">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.020 0.015 0.003" />
+      </geometry>
+    </visual>
+        <collision name="imu_link_collision">
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.020 0.015 0.003" />
+      </geometry>
+    </collision>
+  </link>
+    <joint name="fr_hip_joint" type="revolute">
+    <origin xyz="0.10999999600784177 0.0599999953468944 0.02500000379227174" rpy="-1.5707963267948943 -1.5707963267948934 0" />
+    <parent link="base_link" />
+    <child link="rf_motor1_link" />
+    <axis xyz="0.0 1.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="br_hip_joint" type="revolute">
+    <origin xyz="-0.11000000399216309 0.059999995346893896 0.025000003792271172" rpy="1.570796326794899 -1.5707963267948934 0" />
+    <parent link="base_link" />
+    <child link="rb_motor1_link" />
+    <axis xyz="0.0 1.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="fr_hip_bracket_weld" type="fixed">
+    <origin xyz="0.0 0.01879999999999999 0.0356" rpy="1.5707963267948966 -1.5707963267948966 0" />
+    <parent link="rf_motor1_link" />
+    <child link="rf_motor1_bracket_link" />
+  </joint>
+    <joint name="fl_hip_joint" type="revolute">
+    <origin xyz="0.10999999600784172 -0.060000004653107356 0.025000003792271634" rpy="-1.5707963267948943 -1.5707963267948934 0" />
+    <parent link="base_link" />
+    <child link="lf_motor1_link" />
+    <axis xyz="0.0 1.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="fl_hip_bracket_weld" type="fixed">
+    <origin xyz="0.0 0.01879999999999999 -0.0356" rpy="1.5707963267948966 -1.5707963267948966 0" />
+    <parent link="lf_motor1_link" />
+    <child link="lf_motor1_bracket_link" />
+  </joint>
+    <joint name="bl_hip_joint" type="revolute">
+    <origin xyz="-0.11000000399216314 -0.06000000465310786 0.02500000379227103" rpy="1.570796326794899 -1.5707963267948934 0" />
+    <parent link="base_link" />
+    <child link="lb_motor1_link" />
+    <axis xyz="0.0 1.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="br_hip_bracket_weld" type="fixed">
+    <origin xyz="0.0 0.018700000000000012 -0.0356" rpy="-1.5707963267948966 1.5707963267948966 0" />
+    <parent link="rb_motor1_link" />
+    <child link="rb_motor1_bracket_link" />
+  </joint>
+    <joint name="bl_hip_bracket_weld" type="fixed">
+    <origin xyz="0.0 0.018800000000000008 0.0356" rpy="-1.5707963267948966 1.5707963267948966 0" />
+    <parent link="lb_motor1_link" />
+    <child link="lb_motor1_bracket_link" />
+  </joint>
+    <joint name="fr_thigh_joint" type="revolute">
+    <origin xyz="0.0040000000000000036 0.0 0.0" rpy="-1.5707963267948966 -0.0 0.0" />
+    <parent link="rf_motor1_bracket_link" />
+    <child link="rf_motor2_link" />
+    <axis xyz="1.0 0.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="fl_thigh_joint" type="revolute">
+    <origin xyz="-0.0040000000000000036 0.0 0.0" rpy="-1.5707963267948966 3.944304526105059e-31 2.291813991119067e-62" />
+    <parent link="lf_motor1_bracket_link" />
+    <child link="lf_motor2_link" />
+    <axis xyz="-1.0 0.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="bl_thigh_joint" type="revolute">
+    <origin xyz="-0.0040000000000000036 0.0 0.0" rpy="-1.5707963267948966 7.888609052210118e-31 0.0" />
+    <parent link="lb_motor1_bracket_link" />
+    <child link="lb_motor2_link" />
+    <axis xyz="-1.0 0.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="br_thigh_joint" type="revolute">
+    <origin xyz="0.0040000000000000036 0.0 0.0" rpy="-1.5707963267948966 -3.944304526105059e-31 -1.5777218104420236e-30" />
+    <parent link="rb_motor1_bracket_link" />
+    <child link="rb_motor2_link" />
+    <axis xyz="1.0 0.0 0.0" />
+    <limit lower="-2.618" upper="2.618" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="fr_thigh_weld" type="fixed">
+    <origin xyz="0.03530000000000001 0.0 0.035599999999999986" rpy="2.6571196513381226e-32 5.3320955776206035e-31 9.614990382519331e-62" />
+    <parent link="rf_motor2_link" />
+    <child link="rf_motor2_bracket_link" />
+  </joint>
+    <joint name="fl_thigh_weld" type="fixed">
+    <origin xyz="-0.0023000000000000043 0.0 0.035599999999999986" rpy="-3.141592653589793 6.647151574315566e-31 -3.944304526105059e-31" />
+    <parent link="lf_motor2_link" />
+    <child link="lf_motor2_bracket_link" />
+  </joint>
+    <joint name="bl_thigh_weld" type="fixed">
+    <origin xyz="-0.0023000000000000043 0.0 0.035599999999999986" rpy="3.141592653589793 3.4704200591275874e-31 -3.944304526105059e-31" />
+    <parent link="lb_motor2_link" />
+    <child link="lb_motor2_bracket_link" />
+  </joint>
+    <joint name="br_thigh_weld" type="fixed">
+    <origin xyz="0.03530000000000001 0.0 0.035599999999999986" rpy="-2.2126811488045565e-30 -6.942728548144587e-31 6.815904793773722e-61" />
+    <parent link="rb_motor2_link" />
+    <child link="rb_motor2_bracket_link" />
+  </joint>
+    <joint name="fr_knee_servo_weld" type="fixed">
+    <origin xyz="0.0 0.004523890000000002 0.05788333000000002" rpy="-3.141592653589793 -1.947758588500804e-17 -2.094395102393196" />
+    <parent link="rf_motor2_bracket_link" />
+    <child link="rf_motor3_link" />
+  </joint>
+    <joint name="fl_knee_servo_weld" type="fixed">
+    <origin xyz="0.0 -0.004523890000000002 -0.05788333000000002" rpy="9.254765353256078e-31 1.9477585885008513e-17 2.094395102393196" />
+    <parent link="lf_motor2_bracket_link" />
+    <child link="lf_motor3_link" />
+  </joint>
+    <joint name="bl_knee_servo_weld" type="fixed">
+    <origin xyz="0.0 -0.004523890000000002 -0.05788333000000002" rpy="-7.790363355305757e-31 1.9477585885008562e-17 2.094395102393196" />
+    <parent link="lb_motor2_bracket_link" />
+    <child link="lb_motor3_link" />
+  </joint>
+    <joint name="br_knee_servo_weld" type="fixed">
+    <origin xyz="0.0 0.004523890000000002 0.05788333000000002" rpy="3.141592653589793 -1.947758588500645e-17 -2.094395102393196" />
+    <parent link="rb_motor2_bracket_link" />
+    <child link="rb_motor3_link" />
+  </joint>
+    <joint name="fr_knee_joint" type="revolute">
+    <origin xyz="-0.016565252187362985 0.00690814157129581 -0.030830500000000018" rpy="1.6868084180810108e-17 9.738792942504526e-18 -2.094395102393196" />
+    <parent link="rf_motor3_link" />
+    <child link="rf_toe_link" />
+    <axis xyz="1.0 0.0 0.0" />
+    <limit lower="-2.356" upper="2.356" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="fl_knee_joint" type="revolute">
+    <origin xyz="0.0021847478126370314 0.03938409421321221 -0.0308305" rpy="-3.141592653589793 9.738792942504131e-18 -2.094395102393196" />
+    <parent link="lf_motor3_link" />
+    <child link="lf_toe_link" />
+    <axis xyz="-1.0 0.0 0.0" />
+    <limit lower="-2.356" upper="2.356" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="br_knee_joint" type="revolute">
+    <origin xyz="-0.016565252187362982 0.006908141571295801 -0.030830500000000018" rpy="1.686808418081036e-17 9.738792942503735e-18 -2.094395102393196" />
+    <parent link="rb_motor3_link" />
+    <child link="rb_toe_link" />
+    <axis xyz="1.0 0.0 0.0" />
+    <limit lower="-2.356" upper="2.356" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="bl_knee_joint" type="revolute">
+    <origin xyz="0.0021847478126370136 0.03938409421321224 -0.0308305" rpy="-3.141592653589793 9.738792942505118e-18 -2.094395102393196" />
+    <parent link="lb_motor3_link" />
+    <child link="lb_toe_link" />
+    <axis xyz="-1.0 0.0 0.0" />
+    <limit lower="-2.356" upper="2.356" effort="2.94" velocity="6.11" />
+  </joint>
+    <joint name="camera_mount_weld" type="fixed">
+    <origin xyz="0.10999999600784173 -4.653106473462288e-09 0.025000003792271706" rpy="-1.5707963267948943 -1.5707963267948934 0" />
+    <parent link="base_link" />
+    <child link="camera_link" />
+  </joint>
+    <joint name="imu_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <parent link="base_link" />
+    <child link="imu_link" />
+  </joint>
+    <link name="camera_optical_frame" />
+    <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966" />
+    <parent link="camera_link" />
+    <child link="camera_optical_frame" />
+  </joint>
+<gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/cerberus</robotNamespace>
+    </plugin>
+  </gazebo>
+  <gazebo reference="base_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="imu_link">
+      <material>Gazebo/DarkGrey</material>
+      <sensor type="imu" name="cerberus_imu">
+        <update_rate>200.0</update_rate>
+        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_controller">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>200.0</updateRate>
+          <bodyName>imu_link</bodyName>
+          <topicName>/cerberus/imu</topicName>
+          <gaussianNoise>0.001 0.001 0.001 0.005 0.005 0.005</gaussianNoise>
+        </plugin>
+      </sensor>
+    </gazebo><gazebo reference="camera_link">
+      <material>Gazebo/Black</material>
+      <sensor type="camera" name="cerberus_camera">
+        <update_rate>30.0</update_rate>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image><clip>
+            <near>0.1</near>
+            <far>10.0</far>
+          </clip><noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera><plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+          <cameraName>/cerberus/camera</cameraName>
+          <imageTopicName>/cerberus/camera/image_raw</imageTopicName>
+          <cameraInfoTopicName>/cerberus/camera/camera_info</cameraInfoTopicName>
+          <frameName>camera_optical_frame</frameName>
+          <hackBaseline>0.0</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+    </gazebo><gazebo reference="rf_toe_link">
+      <material>Gazebo/Grey</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo><gazebo reference="rb_toe_link">
+      <material>Gazebo/Grey</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo><gazebo reference="lf_toe_link">
+      <material>Gazebo/Grey</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo><gazebo reference="lb_toe_link">
+      <material>Gazebo/Grey</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo><gazebo reference="rf_motor1_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rb_motor1_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rf_motor1_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lf_motor1_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lf_motor1_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lb_motor1_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lb_motor1_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rb_motor1_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rf_motor2_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lf_motor2_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lb_motor2_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rb_motor2_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rf_motor2_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lf_motor2_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lb_motor2_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rb_motor2_bracket_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rf_motor3_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lf_motor3_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="lb_motor3_link">
+      <material>Gazebo/Grey</material>
+    </gazebo><gazebo reference="rb_motor3_link">
+      <material>Gazebo/Grey</material>
+    </gazebo>
+</robot>
