@@ -10,6 +10,8 @@ from launch.substitutions import Command, LaunchConfiguration, PathJoinSubstitut
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+from launch.actions import TimerAction
+
 
 def generate_launch_description():
 
@@ -24,7 +26,7 @@ def generate_launch_description():
 
     world_arg = DeclareLaunchArgument(
         "world",
-        default_value="empty.world",
+        default_value="cerberus.world",
         description="Gazebo world file to load (must be findable by gazebo_ros, "
                      "or give an absolute path)",
     )
@@ -62,6 +64,30 @@ def generate_launch_description():
     robot_description_content = Command(["sed '1{/<?xml/d}' ", urdf_path])
     robot_description = {"robot_description": robot_description_content}
 
+    controller_manager_node = Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+        name="controller_manager",
+        output="screen",
+        parameters=[
+            PathJoinSubstitution([FindPackageShare(pkg_name), "config", "controller_manager.yaml"]),
+            {"use_sim_time": LaunchConfiguration("use_sim_time")},
+        ],
+    )
+
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster"],
+        output="screen",
+    )
+
+    joint_trajectory_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_trajectory_controller"],
+        output="screen",
+    )
 
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
@@ -88,18 +114,24 @@ def generate_launch_description():
 
 
     spawn_entity_node = Node(
-        package="gazebo_ros",
-        executable="spawn_entity.py",
-        name="spawn_cerberus",
-        output="screen",
-        arguments=[
-            "-topic", "robot_description",
-            "-entity", "cerberus",
-            "-x", LaunchConfiguration("x"),
-            "-y", LaunchConfiguration("y"),
-            "-z", LaunchConfiguration("z"),
-        ],
+    package="gazebo_ros",
+    executable="spawn_entity.py",
+    name="spawn_cerberus",
+    output="screen",
+    arguments=[
+        "-topic", "robot_description",
+        "-entity", "cerberus",
+        "-x", LaunchConfiguration("x"),
+        "-y", LaunchConfiguration("y"),
+        "-z", LaunchConfiguration("z"),
+    ],
     )
+
+    delayed_spawn_entity = TimerAction(
+        period=5.0,
+        actions=[spawn_entity_node],
+    )
+
 
     return LaunchDescription(
         [
@@ -110,8 +142,11 @@ def generate_launch_description():
             x_arg,
             y_arg,
             z_arg,
-            robot_state_publisher_node,
             gazebo,
-            spawn_entity_node,
+            delayed_spawn_entity,
+            robot_state_publisher_node,
+            controller_manager_node,
+            TimerAction(period=2.0, actions=[joint_state_broadcaster_spawner]),
+            TimerAction(period=4.0, actions=[joint_trajectory_controller]),
         ]
     )

@@ -683,11 +683,81 @@
     <parent link="camera_link" />
     <child link="camera_optical_frame" />
   </joint>
+<ros2_control name="cerberus_hardware" type="system">
+  <hardware> 
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+
+  <joint name="fr_hip_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="fl_hip_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="br_hip_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="bl_hip_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="fr_thigh_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="fl_thigh_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="br_thigh_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="bl_thigh_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="fr_knee_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="fl_knee_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="br_knee_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+   <joint name="bl_knee_joint">
+    <command_interface name="position"/>
+    <state_interface name="position"/>
+    <state_interface name="velocity"/>
+  </joint>
+</ros2_control>
+  
+
 <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/cerberus</robotNamespace>
-    </plugin>
-  </gazebo>
+  <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+    <robot_param>robot_description</robot_param>
+    <robot_param_node>robot_state_publisher</robot_param_node>
+    <parameters>/home/sai/cerberus_ws/install/cerberus_description/share/cerberus_description/config/controller_manager.yaml</parameters>
+  </plugin>
+</gazebo>
   <gazebo reference="base_link">
       <material>Gazebo/Grey</material>
     </gazebo><gazebo reference="imu_link">
@@ -734,21 +804,29 @@
         </plugin>
       </sensor>
     </gazebo><gazebo reference="rf_toe_link">
-      <material>Gazebo/Grey</material>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
+    <material>Gazebo/Grey</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>100000.0</kp>
+      <kd>10.0</kd>
     </gazebo><gazebo reference="rb_toe_link">
-      <material>Gazebo/Grey</material>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
+    <material>Gazebo/Grey</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>100000.0</kp>
+    <kd>10.0</kd>
     </gazebo><gazebo reference="lf_toe_link">
-      <material>Gazebo/Grey</material>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
+    <material>Gazebo/Grey</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>100000.0</kp>
+    <kd>10.0</kd>
     </gazebo><gazebo reference="lb_toe_link">
-      <material>Gazebo/Grey</material>
-      <mu1>1.0</mu1>
-      <mu2>1.0</mu2>
+    <material>Gazebo/Grey</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>100000.0</kp>
+    <kd>10.0</kd>
     </gazebo><gazebo reference="rf_motor1_link">
       <material>Gazebo/Grey</material>
     </gazebo><gazebo reference="rb_motor1_link">
