@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100  # Hz
+    update_rate: 1000  # Hz
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -24,9 +24,25 @@ joint_trajectory_controller:
       - br_knee_joint
       - bl_knee_joint
 
+    gains:
+      fr_hip_joint:   {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      fl_hip_joint:   {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      br_hip_joint:   {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      bl_hip_joint:   {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      fr_thigh_joint: {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      fl_thigh_joint: {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      br_thigh_joint: {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      bl_thigh_joint: {p: 10.0, i: 0.0, d: 0.1,  i_clamp: 0.0}
+      fr_knee_joint:  {p: 6.0,  i: 0.0, d: 0.03, i_clamp: 0.0}
+      fl_knee_joint:  {p: 6.0,  i: 0.0, d: 0.03, i_clamp: 0.0}
+      br_knee_joint:  {p: 6.0,  i: 0.0, d: 0.03, i_clamp: 0.0}
+      bl_knee_joint:  {p: 6.0,  i: 0.0, d: 0.03, i_clamp: 0.0}
+     
+
     command_interfaces:
-      - position
+      - effort
 
     state_interfaces:
       - position
       - velocity
+    allow_partial_joints_goal: true

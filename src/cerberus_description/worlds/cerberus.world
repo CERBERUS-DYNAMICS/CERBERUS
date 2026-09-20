@@ -14,10 +14,10 @@
           <sor>1.2</sor>
         </solver>
         <constraints>
-          <cfm>0.0</cfm>
-          <erp>0.2</erp>
-          <contact_max_correcting_vel>1.0</contact_max_correcting_vel>
-          <contact_surface_layer>0.001</contact_surface_layer>
+          <cfm>0.00001</cfm>
+          <erp>0.1</erp>
+          <contact_max_correcting_vel>0.05</contact_max_correcting_vel>
+          <contact_surface_layer>0.002</contact_surface_layer>
         </constraints>
       </ode>
     </physics>
