@@ -133,7 +133,8 @@ def foot_advance(s):
     return 0.5 * (1.0 - math.cos(math.pi * s))
 
 
-PHASE_OFFSET = {"fr": 0.0, "bl": 0.0, "fl": 0.5, "br": 0.5}   # diagonal pairs
+# Phase offsets for diagonal-pair trot: front-rear pair leads, middle follows.
+PHASE_OFFSET = {"fr": 0.0, "bl": 0.0, "fl": 0.5, "br": 0.5}
 
 
 def stride_vectors(vx, vy, wz, t_stance):
@@ -166,8 +167,8 @@ def joints_at(phase, stride, height):
 class Gait:
     """cmd_vel -> filtered command -> foot paths -> joint targets (pure Python, testable)."""
 
-    def __init__(self, step_time=0.25, height=0.03, max_stride=0.04,
-                 march_in_place=False, lin_acc=0.5, ang_acc=2.5):
+    def __init__(self, step_time=0.12, height=0.05, max_stride=0.06,
+                 march_in_place=False, lin_acc=2.0, ang_acc=5.0):
         self.step_time = step_time            # seconds per half cycle (= stance time)
         self.cycle = 2.0 * step_time
         self.height = height
@@ -198,7 +199,8 @@ class Gait:
         """Advance the phase; when not wanted, stop exactly at the next 'all feet down' point."""
         if want:
             return (phase + step) % 1.0
-        if phase in (0.0, 0.5):
+        # Fixed: use epsilon comparison to handle floating-point drift
+        if abs(phase) < 1e-9 or abs(phase - 0.5) < 1e-9:
             return phase
         nxt = 0.5 if phase < 0.5 else 1.0
         new = phase + step
@@ -229,20 +231,27 @@ class Gait:
 class GaitNode(Node):
     def __init__(self):
         super().__init__("walking_node")
-        self.declare_parameter("step_time", 0.25)        # s per half cycle (stance = swing time)
-        self.declare_parameter("step_height", 0.03)      # m of foot lift
-        self.declare_parameter("max_stride", 0.03)       # m a foot may travel per step
+        self.declare_parameter("step_time", 0.12)        # s per half cycle (stance = swing time)
+        self.declare_parameter("step_height", 0.05)      # m of foot lift
+        self.declare_parameter("max_stride", 0.06)       # m a foot may travel per step
         self.declare_parameter("cmd_timeout", 0.5)       # s without /cmd_vel -> stop (<=0: never)
         self.declare_parameter("march_in_place", False)
         self.declare_parameter("rate", 50.0)             # Hz of trajectory updates
+        self.declare_parameter("lin_acc", 2.0)           # m/s^2 linear acceleration limit
+        self.declare_parameter("ang_acc", 5.0)           # rad/s^2 angular acceleration limit
+        self.declare_parameter("ahead", 0.02)           # s between trajectory points
+        self.declare_parameter("traj_count", 5)          # number of trajectory points to send
         p = self.get_parameter
         self.gait = Gait(step_time=float(p("step_time").value),
                          height=float(p("step_height").value),
                          max_stride=float(p("max_stride").value),
-                         march_in_place=bool(p("march_in_place").value))
+                         march_in_place=bool(p("march_in_place").value),
+                         lin_acc=float(p("lin_acc").value),
+                         ang_acc=float(p("ang_acc").value))
         self.cmd_timeout = float(p("cmd_timeout").value)
         self.rate = float(p("rate").value)
-        self.ahead = 0.04                                # s between trajectory points
+        self.ahead = float(p("ahead").value)
+        self.traj_count = int(p("traj_count").value)
 
         self.pub = self.create_publisher(
             JointTrajectory, "/joint_trajectory_controller/joint_trajectory", 10)
@@ -296,7 +305,7 @@ class GaitNode(Node):
             self.gait.set_target(0.0, 0.0, 0.0)
 
         self.gait.update(dt)
-        points = self.gait.joint_points(3, self.ahead)
+        points = self.gait.joint_points(self.traj_count, self.ahead)
         if points is None:
             self.get_logger().warn("Foot target out of reach - skipping update.",
                                    throttle_duration_sec=2.0)
