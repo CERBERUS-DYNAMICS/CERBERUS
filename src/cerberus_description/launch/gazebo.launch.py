@@ -103,6 +103,12 @@ def generate_launch_description():
         name="stand_pose",
         output="screen",
     )
+    walking_node = Node(
+            package=pkg_name,
+            executable="walking_node.py",
+            name="walking",
+            output="screen",
+        )
 
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
@@ -181,6 +187,6 @@ def generate_launch_description():
             robot_state_publisher_node,
             start_jsb_after_spawn,
             start_jtc_after_jsb,
-            start_stand_after_jtc,
+           #start_stand_after_jtc,
             ]
     )

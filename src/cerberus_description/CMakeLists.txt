@@ -18,7 +18,7 @@ DESTINATION share/${PROJECT_NAME}
 )
 
 install(
-  PROGRAMS src/stand_pose_node.py
+  PROGRAMS src/stand_pose_node.py src/walking_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
