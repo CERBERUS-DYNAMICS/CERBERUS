@@ -1,3 +1,3 @@
 # CERBERUS
 CERBERUS THE ROBOT DOG
-quadruped robot project
+quadruped robot project.
